@@ -1,0 +1,8 @@
+.gitignore
+.vscode
+bin/*.map
+src
+build.hxml
+tcss-tmLanguage.hxml
+test
+hxformat.json

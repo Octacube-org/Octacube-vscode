@@ -1,0 +1,69 @@
+{
+	"name": "octacube",
+	"displayName": "Octacube",
+	"icon": "icon.png",
+	"publisher": "Kriptel",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.4.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Kriptel/Octacube-vscode"
+	},
+	"activationEvents": [
+		"onLanguage:tcss",
+		"onFile:*.tcss"
+	],
+	"main": "bin/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "tcss.showPreview",
+				"title": "TCSS: Show CSS Preview",
+				"category": "TCSS"
+			},
+			{
+				"command": "tcss.reload",
+				"title": "TCSS: Reload",
+				"category": "TCSS"
+			}
+		],
+		"languages": [
+			{
+				"id": "tcss",
+				"aliases": [
+					"Octacube Typed Cascading Style Sheets",
+					"tcss"
+				],
+				"extensions": [
+					".tcss"
+				],
+				"configuration": "./tcss/language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "tcss",
+				"scopeName": "source.tcss",
+				"path": "./tcss/tmLanguage.json"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "resourceLangId == tcss",
+					"command": "tcss.showPreview",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "resourceExtname == .tcss",
+					"command": "tcss.showPreview",
+					"group": "navigation"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,241 @@
+{
+  "name": "Octacube Typed Cascading Style Sheets",
+  "repository": {
+    "types": {
+      "patterns": [
+        {
+          "name": "entity.name.type.tcss",
+          "match": "((?:\\\\.|[a-zA-Z])(?:\\\\.|[a-zA-Z0-9_.\\-])*)|%"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "begin": "\\b(collection)\\s+(class)\\b\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.tcss"
+            },
+            "3": {
+              "name": "punctuation.definition.parameters.begin.tcss"
+            },
+            "2": {
+              "name": "keyword.control.tcss"
+            }
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.parameters.end.tcss"
+            }
+          },
+          "patterns": [
+            {
+              "match": "\\b([a-zA-Z0-9_]+)\\b\\s*(:)\\s*\\b([a-zA-Z0-9_]+)\\b",
+              "captures": {
+                "1": {
+                  "name": "entity.name.type.tcss"
+                },
+                "3": {
+                  "name": "entity.name.type.tcss"
+                },
+                "2": {
+                  "name": "keyword.operator.tcss"
+                }
+              }
+            },
+            {
+              "name": "punctuation.separator.tcss",
+              "match": ","
+            }
+          ]
+        },
+        {
+          "name": "keyword.control.tcss",
+          "match": "\\b(import|extern|extends|virtual|abstract|public|custom|default|collection|struct)\\b"
+        },
+        {
+          "match": "\\b(collection)\\s+(class)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.tcss"
+            },
+            "2": {
+              "name": "keyword.control.tcss"
+            }
+          }
+        },
+        {
+          "match": "\\b(class|abstract|rule)\\s+([a-zA-Z0-9_.,\\-]+)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.tcss"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "name": "entity.name.type.tcss",
+                  "match": "((?:\\\\.|[a-zA-Z])(?:\\\\.|[a-zA-Z0-9_.\\-])*)|%"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.other.color.rgb-value.tcss",
+          "match": "#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?\\b"
+        },
+        {
+          "name": "constant.numeric.tcss",
+          "match": "\\b\\d+([a-z%]+)?(?!\\w)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "@<",
+          "name": "string.quoted.other.tcss",
+          "end": ">"
+        },
+        {
+          "begin": "\"",
+          "name": "string.quoted.double.tcss",
+          "end": "\""
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "name": "comment.block.tcss",
+          "end": "\\*/"
+        },
+        {
+          "begin": "//",
+          "name": "comment.line.double-slash.tcss",
+          "end": "$"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.tcss",
+          "match": "(=|\\||;|\\{|\\})"
+        }
+      ]
+    },
+    "fields": {
+      "patterns": [
+        {
+          "begin": "\\b((?:\\\\.|[a-z])(?:\\\\.|[a-zA-Z0-9_.\\-])*)\\s+\\{",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.type.tcss"
+            }
+          },
+          "end": "\\}",
+          "patterns": [
+            {
+              "name": "punctuation.separator.tcss",
+              "match": ","
+            },
+            {
+              "name": "variable.other.readwrite.tcss",
+              "match": "\\b[a-zA-Z0-9_]+\\b"
+            }
+          ]
+        },
+        {
+          "match": "\\b((?:\\\\.|[a-zA-Z])(?:\\\\.|[a-zA-Z0-9_.\\-])*)\\s+((?:(?:\\\\.|[a-z])(?:\\\\.|[a-zA-Z0-9_.\\-])*))(?=\\s*[:;=])",
+          "captures": {
+            "1": {
+              "name": "entity.name.type.tcss"
+            },
+            "2": {
+              "name": "variable.other.readwrite.tcss"
+            }
+          }
+        }
+      ]
+    },
+    "rulescript": {
+      "match": "\\b(extern\\s+rule)\\s+(script)\\b",
+      "captures": {
+        "1": {
+          "name": "keyword.control.tcss"
+        },
+        "2": {
+          "name": "variable.language.self.tcss"
+        }
+      }
+    },
+    "css-block": {
+      "begin": "\\b(extern\\s+css)\\s+(</>)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.begin.tcss"
+        }
+      },
+      "end": "(</>)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.end.tcss"
+        }
+      },
+      "patterns": [
+        {
+          "begin": "^|(?<=\\s)",
+          "end": "(?=</>)",
+          "contentName": "source.css",
+          "patterns": [
+            {
+              "include": "source.css#rule-list-innards"
+            },
+            {
+              "include": "source.css"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.tcss",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#css-block"
+    },
+    {
+      "include": "#rulescript"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#fields"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#operators"
+    }
+  ]
+}

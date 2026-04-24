@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Extension",
+			"type": "extensionHost",
+			"request": "launch",
+			"runtimeExecutable": "${execPath}",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"preLaunchTask": "hxml: build.hxml",
+			"stopOnEntry": false,
+			"sourceMaps": true,
+			"outFiles": [
+				"${workspaceFolder}/bin/**/*.js"
+			]
+		},
+		{
+			"name": "Build TSS Highlighting",
+			"type": "haxe-eval",
+			"request": "launch"
+		}
+
+	]
+}

@@ -1,0 +1,11 @@
+-cp src
+-lib vscode
+# -lib octa-tcss
+
+-js bin/extension.js
+-D analyzer-optimize
+-D js-es=6
+# -debug
+Main
+
+--macro TCssHighlighting.main()
