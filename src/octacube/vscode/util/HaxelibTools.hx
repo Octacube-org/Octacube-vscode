@@ -33,7 +33,7 @@ class HaxelibTools
 	{
 		return try
 		{
-			ChildProcess.execSync('haxelib git octa-tcss https://github.com/Kriptel/Octa-tcss.git');
+			ChildProcess.execSync('haxelib git octa-tcss https://github.com/Octacube-org/Octa-tcss.git');
 
 			true;
 		} catch (e:Dynamic)

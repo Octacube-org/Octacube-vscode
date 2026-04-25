@@ -69,7 +69,7 @@ class TCssService extends BaseNode
 						if (selection == installText)
 							HaxelibTools.installLib();
 						else if (selection == checkDocsText)
-							Vscode.env.openExternal(Uri.parse("https://github.com/Kriptel/Octa-tcss"));
+							Vscode.env.openExternal(Uri.parse("https://github.com/Octacube-org/Octa-tcss.git"));
 					});
 			}
 			else
@@ -137,7 +137,7 @@ class TCssService extends BaseNode
 						'Check GitHub')
 						.then(selection ->
 						{
-							Vscode.env.openExternal(Uri.parse("https://github.com/Kriptel/Octa-tcss"));
+							Vscode.env.openExternal(Uri.parse("https://github.com/Octacube-org/Octa-tcss.git"));
 						});
 				}
 			}
